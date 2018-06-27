@@ -11,28 +11,12 @@ import UIKit
 class WeatherTableViewController: UITableViewController {
 
     
-    func getWeatherData() {
-        guard let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?id=2147714&units=metric&APPID=d65e80a3b31f683d741ef9d015c0621f") else { return }
-        
-        let session = URLSession.shared
-        let task = session.dataTask(with: url) { (data, response, error) in
-            guard let data = data else { return }
-            do {
-                let weather = try JSONDecoder().decode(Result.self, from: data)
-                print(weather)
-            } catch {
-                
-            }
-        }
-        
-        task.resume()
-    }
+ let networkController = NetworkController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        getWeatherData()
+        networkController.getWeatherData()
         
         
         // Uncomment the following line to preserve selection between presentations

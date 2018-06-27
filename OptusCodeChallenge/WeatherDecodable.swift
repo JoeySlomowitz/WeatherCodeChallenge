@@ -8,11 +8,16 @@
 
 import Foundation
 
-struct Result: Decodable {
+struct Results: Decodable {
     let main: Main
+    
+    let id: Int
+    let name: String
 }
 
 struct Main: Decodable {
     let temp: Double
-    let name: String
+    let tempMin: Double
+    let tempMax: Double
+    
 }
